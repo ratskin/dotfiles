@@ -15,6 +15,18 @@ POWERLEVEL9K_NVM_BACKGROUND='072'
 POWERLEVEL9K_SHOW_CHANGESET=true
 #export ZSH_THEME="random"
 
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# why would you type 'cd dir' if you could just type 'dir'?
+setopt AUTO_CD
+
+# 10 second wait if you do something that will delete everything.  I wish I'd had this before...
+setopt RM_STAR_WAIT
+
+insert_sudo () { zle beginning-of-line; zle -U "sudo " }
+zle -N insert-sudo insert_sudo
+bindkey "^[s" insert-sudo
+
 # Set to this to use case-sensitive completion
 export CASE_SENSITIVE="true"
 
